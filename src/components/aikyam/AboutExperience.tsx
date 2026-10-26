@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { sections, type AboutSection } from "./content";
@@ -57,6 +58,7 @@ function Copy({ section, final = false }: { section: AboutSection; final?: boole
         {c["Supporting line"] && <p>{c["Supporting line"]}</p>}
         {items.map((item) => {
           const isShakti = item.title === "Shakti — I CREATE";
+          const isShiva = item.title === "Shiva — I SEE";
           const inner = (
             <>
               <h3>{item.title}</h3>
@@ -72,8 +74,22 @@ function Copy({ section, final = false }: { section: AboutSection; final?: boole
               aria-label="Shakti — I CREATE: The 18 Maha Shakti Peethas. Explore the journey."
             >
               {inner}
-              <span className="restored-item-cta" aria-hidden="true">Explore ↗</span>
+              <span className="restored-item-cta" aria-hidden="true">
+                Explore ↗
+              </span>
             </a>
+          ) : isShiva ? (
+            <Link
+              className="restored-item restored-item-link"
+              key={item.title}
+              to="/aikya-mandala/shiva"
+              aria-label="Shiva — I SEE: The 12 Jyotirlingas. Explore the journey."
+            >
+              {inner}
+              <span className="restored-item-cta" aria-hidden="true">
+                Explore ↗
+              </span>
+            </Link>
           ) : (
             <div className="restored-item" key={item.title}>
               {inner}

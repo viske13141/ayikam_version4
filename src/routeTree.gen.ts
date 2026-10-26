@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AikyaMandalaRouteImport } from './routes/aikya-mandala'
 import { Route as ParticipateRouteImport } from './routes/participate'
 import { Route as AikyaMandalaShaktiRouteImport } from './routes/aikya-mandala_.shakti'
+import { Route as AikyaMandalaShivaRouteImport } from './routes/aikya-mandala_.shiva'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const AikyaMandalaShaktiRoute = AikyaMandalaShaktiRouteImport.update({
   path: '/aikya-mandala/shakti',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AikyaMandalaShivaRoute = AikyaMandalaShivaRouteImport.update({
+  id: '/aikya-mandala_/shiva',
+  path: '/aikya-mandala/shiva',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/aikya-mandala': typeof AikyaMandalaRoute
   '/participate': typeof ParticipateRoute
   '/aikya-mandala/shakti': typeof AikyaMandalaShaktiRoute
+  '/aikya-mandala/shiva': typeof AikyaMandalaShivaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/aikya-mandala': typeof AikyaMandalaRoute
   '/participate': typeof ParticipateRoute
   '/aikya-mandala/shakti': typeof AikyaMandalaShaktiRoute
+  '/aikya-mandala/shiva': typeof AikyaMandalaShivaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,14 +70,25 @@ export interface FileRoutesById {
   '/aikya-mandala': typeof AikyaMandalaRoute
   '/participate': typeof ParticipateRoute
   '/aikya-mandala_/shakti': typeof AikyaMandalaShaktiRoute
+  '/aikya-mandala_/shiva': typeof AikyaMandalaShivaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/aikya-mandala' | '/participate' | '/aikya-mandala/shakti'
+    | '/'
+    | '/about'
+    | '/aikya-mandala'
+    | '/participate'
+    | '/aikya-mandala/shakti'
+    | '/aikya-mandala/shiva'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/about' | '/aikya-mandala' | '/participate' | '/aikya-mandala/shakti'
+    | '/'
+    | '/about'
+    | '/aikya-mandala'
+    | '/participate'
+    | '/aikya-mandala/shakti'
+    | '/aikya-mandala/shiva'
   id:
     | '__root__'
     | '/'
@@ -77,6 +96,7 @@ export interface FileRouteTypes {
     | '/aikya-mandala'
     | '/participate'
     | '/aikya-mandala_/shakti'
+    | '/aikya-mandala_/shiva'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -85,6 +105,7 @@ export interface RootRouteChildren {
   AikyaMandalaRoute: typeof AikyaMandalaRoute
   ParticipateRoute: typeof ParticipateRoute
   AikyaMandalaShaktiRoute: typeof AikyaMandalaShaktiRoute
+  AikyaMandalaShivaRoute: typeof AikyaMandalaShivaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -124,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AikyaMandalaShaktiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aikya-mandala_/shiva': {
+      id: '/aikya-mandala_/shiva'
+      path: '/aikya-mandala/shiva'
+      fullPath: '/aikya-mandala/shiva'
+      preLoaderRoute: typeof AikyaMandalaShivaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -133,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   AikyaMandalaRoute: AikyaMandalaRoute,
   ParticipateRoute: ParticipateRoute,
   AikyaMandalaShaktiRoute: AikyaMandalaShaktiRoute,
+  AikyaMandalaShivaRoute: AikyaMandalaShivaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
